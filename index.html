@@ -4,19 +4,63 @@
 
 <html>
   <head>
-    <title>
-    1_FizzBuzz
-    </title>
-    <script src="function.js">
-    </script>
+    <meta charset="utf-8">
+    <title>1_FizzBuzz</title>
+
+<!-- --------------------------------------------------- -->
+    <script>
+
+    // 画面初期表示
+    window.onload = function() {
+        document.user_field.massage.value = "数字を入力してください";
+        document.user_field.input_data.value = "";
+        document.user_field.result.value = "";
+     }
+
+     // ボタン押下処理
+      function onSubmit(){
+          var input = parseInt(document.user_field.input_data.value);
+          var result_data = "";
+
+          document.user_field.massage.value = "計算します・・・";
+                    
+          // 入力値がない場合 または　数値でない場合 エラー表示して終了
+          if (Number.isNaN(input)){
+               document.user_field.massage.value = "数字を入力してください！！";
+          }
+          // 数値の場合　表示処理を実行
+          else {
+              document.user_field.massage.value = "数字が入りました！";
+
+              for (var i=1;i<=input;i++){
+                    if ((i%3==0)&&(i%5==0)){
+                        result_data = result_data + "FizzBuzz,";
+                    }
+                    else if (i%3==0){
+                        result_data = result_data + "Fizz,";
+                    }
+                    else if (i%5==0){
+                        result_data = result_data + "Buzz,";
+                    }
+                    else {
+                        result_data = result_data + String(i) + ",";
+                    }   
+                }
+                document.user_field.result.value = String(result_data.substring(0,result_data.length-1));
+          }
+      }
+
+  </script>
+<!-- --------------------------------------------------- -->
+  
   </head>
 
-  <body onInit="init()">
+  <body>
     <form name="user_field">
-      <input type="text" name="massage" size="30" maxlength="30"><br>
-      入力：<input type="text" name="input_data" size="6" maxlength="2"><br>
-      <input type="button" name="output" value="Submit" onClick="onSubmit()"><br>
-      結果：<textarea name="result" cols="100" rows="30"></textarea>
+      メッセージ：<input type="text" name="massage" size="20" maxlength="20" disabled="disabled"><br>
+      入力：<input type="text" name="input_data" size="4" maxlength="2">
+      <input type="button" name="output" value="数字を入力したら押してください" onClick="onSubmit();"><br>
+      結果：<input type="text" name="result" size="100" maxlength="100">
     </form>
     
   </body>
