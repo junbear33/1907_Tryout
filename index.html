@@ -5,22 +5,11 @@
     1_FizzBuzz
     </title>
 
-    <script>
-      function onInit(){
-        alert("数字を入力してください");
-      }
-
-      function onSubmit(){
-        alert("計算します！");
-      }
-
-  </script>
-
-    <script src="test.js">
+    <script src="function.js">
     </script>
   </head>
 
-  <body init="onInit()">
+  <body onInit="init()">
     <form name="user_field">
       <input type="text" name="input_data" size="6" maxlength="2">
       <input type="button" name="output" value="Submit" onClick="onSubmit()">
